@@ -51,7 +51,15 @@ const allOrders = asyncHandler( async (req, res)=> {
 
 // User order data from frontend
 const userOrders = asyncHandler( async (req, res)=> {
-    
+      
+      const { userId } = req.body
+
+       // we will get array of orders
+      const orders = await orderModel.find({userId})
+
+      return res.json(new ApiResponse(200,orders))
+
+
 })
 
 //update order status
